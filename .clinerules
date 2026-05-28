@@ -1,0 +1,50 @@
+# 🛡️ Reglas de Comportamiento del Entorno (Guardrails) - Metodología MAES
+
+Este archivo define las reglas obligatorias de comportamiento del agente de IA y los desarrolladores en este entorno de trabajo. Cada línea de código generada debe someterse a estas verificaciones.
+
+---
+
+## ⚡ REGLA 1: Rendimiento Extremo (Core Web Vitals)
+Todo el código generado debe estar diseñado para cumplir con los estándares de rendimiento más estrictos de Google (Lighthouse > 95/100):
+- **Carga de Imágenes:** Usa siempre el componente optimizado `<Image />` de Astro para imágenes locales o remotas, especificando anchos, altos y formatos modernos (WebP/AVIF).
+- **Hidratación Selectiva:** Nunca uses hidratación agresiva innecesaria. Los componentes React interactivos deben cargarse con `client:load` únicamente si son visibles inmediatamente, o `client:visible` para diferirlos.
+- **Fuentes Críticas:** Preconecta los dominios de fuentes y precarga las fuentes que se encuentren arriba del pliegue (above the fold) para evitar saltos de pantalla (CLS).
+- **CSS Libre de Bloqueo:** Utiliza el motor integrado de Tailwind CSS v4 para asegurar que los estilos críticos estén alíneados y minimizados al máximo.
+
+---
+
+## 🏷️ REGLA 2: Tripletas Semánticas (AEO y SEO Avanzado)
+Para asegurar que los motores de búsqueda de Inteligencia Artificial (AEO) comprendan estructuralmente nuestra aplicación, cada componente interactivo o informativo debe inyectar atributos de **Tripletas Semánticas (Sujeto → Predicado → Objeto)** utilizando microdatos o atributos `data-` personalizados:
+- **Estructura RDFa / Atributos de Datos:**
+  - `data-sujeto`: Define la entidad o concepto principal del componente (ej. "ConsolaMAES").
+  - `data-predicado`: Define la acción o relación lógica (ej. "evaluaRendimiento").
+  - `data-objeto`: Define el valor, métrica o entidad destino (ej. "MetricasLighthouse").
+- **Ejemplo en código:**
+  ```astro
+  <section 
+    id="pilares" 
+    data-sujeto="MetodologiaMAES" 
+    data-predicado="compuestaPor" 
+    data-objeto="PilaresTecnologicos"
+  >
+    <!-- Contenido enriquecido -->
+  </section>
+  ```
+
+---
+
+## 🛡️ REGLA 3: Seguridad Robusta (Better Auth & Sentry)
+La seguridad y resiliencia no son negociables. Cada página o servicio dinámico debe implementar:
+- **Autenticación Segura (Better Auth):**
+  - Implementación estricta de middleware para validación de sesiones activas en páginas protegidas.
+  - Almacenamiento seguro de tokens y prevención de ataques CSRF/XSS.
+- **Observabilidad (Sentry):**
+  - Todo bloque `try-catch` crítico de operaciones debe reportar el error directamente a la consola de telemetría de Sentry en producción.
+  - Configuración del SDK de Sentry en el cliente y en el servidor para el rastreo y reporte inmediato de excepciones.
+  - Sanitización estricta de datos de usuario antes de enviarlos a los registros de Sentry (protección de datos confidenciales).
+
+---
+
+## 🔄 REGLA 4: Sincronización Continua (Sync)
+- Al realizar cualquier modificación, adición de dependencias en `package.json` o inicialización de módulos, se debe ejecutar inmediatamente un proceso de sincronización ejecutando `npm install`.
+- Esto garantiza que todas las dependencias cruzadas de `@lordicon/element`, React, Tailwind CSS y demás SDKs de seguridad estén enlazadas físicamente y libres de inconsistencias de caché.

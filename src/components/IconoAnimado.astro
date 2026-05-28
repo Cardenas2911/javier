@@ -1,0 +1,60 @@
+---
+// IconoAnimado.astro - Componente Astro premium para renderizar iconos animados con Lordicon
+interface Props {
+  ruta: string;         // URL o ruta al JSON del icono de Lordicon
+  disparador?: string;   // Tipo de animación: 'hover', 'click', 'loop', 'loop-on-hover', 'morph', etc.
+  tamano?: number;      // Tamaño en píxeles (ancho y alto)
+  colorPrimario?: string; // Color hexadecimal primario (ej. #6366f1)
+  colorSecundario?: string; // Color hexadecimal secundario (ej. #06b6d4)
+}
+
+const { 
+  ruta, 
+  disparador = "hover", 
+  tamano = 64, 
+  colorPrimario = "#6366f1", // Indigo por defecto
+  colorSecundario = "#06b6d4" // Cyan por defecto
+} = Astro.props;
+
+// Construir la cadena de colores para Lordicon
+const cadenaColores = `primary:${colorPrimario},secondary:${colorSecundario}`;
+---
+
+<div class="flex items-center justify-center inline-block select-none" style={`width: ${tamano}px; height: ${tamano}px;`}>
+  <lord-icon
+    src={ruta}
+    trigger={disparador}
+    colors={cadenaColores}
+    style={`width: ${tamano}px; height: ${tamano}px;`}
+  >
+  </lord-icon>
+</div>
+
+<script>
+  // Carga asíncrona y registro del Custom Element <lord-icon> de forma diferida (lazy load)
+  const inicializarLordicon = async () => {
+    if (!customElements.get('lord-icon')) {
+      try {
+        // Importación dinámica en paralelo para no bloquear el hilo principal
+        const [lottieModule, lordiconModule] = await Promise.all([
+          import('lottie-web'),
+          import('@lordicon/element')
+        ]);
+        
+        // Registrar el elemento usando la referencia de animación de forma segura
+        lordiconModule.defineElement(lottieModule.default.loadAnimation);
+      } catch (error) {
+        console.error('⚠️ [MAES] Error al cargar diferidamente Lottie/Lordicon:', error);
+      }
+    }
+  };
+
+  // Disparar la carga del componente solo cuando el navegador esté libre (Idle)
+  if (typeof window !== 'undefined') {
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(() => inicializarLordicon());
+    } else {
+      setTimeout(inicializarLordicon, 300); // Fallback para navegadores antiguos
+    }
+  }
+</script>

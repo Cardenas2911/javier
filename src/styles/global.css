@@ -1,45 +1,54 @@
 @import "tailwindcss";
 
+@theme {
+  --color-kintsugi-red: #ef4444;
+  --color-kintsugi-darkred: #8c0303;
+  --color-kintsugi-dark: #0a0a0a;
+  --color-kintsugi-gray: #1a1a1a;
+  --color-kintsugi-light: #d3d3d3;
+}
+
 .primary {
-  color: #7836cf;
+  color: #ef4444;
 }
 .secondary {
-  color: #512092;
+  color: #8c0303;
 }
 .bg-primary {
-  background-color: #7836cf;
+  background-color: #ef4444;
 }
 .bg-secondary {
-  background-color: #512092;
+  background-color: #8c0303;
 }
 .text-primary {
-  color: #7836cf;
+  color: #ef4444;
 }
 
 /* reglas hover (usar estas clases directamente) */
 .hover-text-secondary:hover {
-  color: #7836cf;
+  color: #ef4444;
 }
 .hover-bg-secondary:hover {
-  background-color: #7836cf;
+  background-color: #ef4444;
 }
 .hover\:bg-secondary:hover {
-  background-color: #512092;
+  background-color: #8c0303;
 }
 .hover\:text-secondary:hover {
-  color: #512092;
+  color: #8c0303;
 }
 
+/* Sombra cinematográfica brutalista en rojo borgoña */
 .text-shadow {
-  text-shadow: 2px 2px 0 #620deb;
+  text-shadow: 2px 2px 0 #8c0303;
 }
 
+/* Sombra en rojo brillante */
 .text-shadow-cyan {
-  text-shadow: 2px 2px 0 #0debd8;
+  text-shadow: 2px 2px 0 #ef4444;
 }
 
 /* estilos del home */
-
 @keyframes gradientMove {
   0% {
     transform: translateX(0) translateY(0);
@@ -70,8 +79,4 @@
 
 .animate-gradientMove2 {
   animation: gradientMove2 8s ease-in-out infinite alternate;
-}
-
-.text-shadow {
-  text-shadow: 2px 2px 0 #6d0deb;
 }

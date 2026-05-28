@@ -2,16 +2,16 @@
 import SocialIcons from "../socialIcons/socialIcons.jsx";
 ---
 
-<footer class="bg-gray-950 text-white">
+<footer class="bg-gray-950 text-white border-t border-white/5">
   <div
     class="container mx-auto flex flex-col items-center justify-between px-6 py-12 lg:flex-row lg:px-20"
   >
     <!-- Logo -->
     <a href="/" class="flex items-center">
       <h3
-        class="text-[#69c7c7] text-4xl font-bold drop-shadow-[1.5px_1.5px_0_#7836cf]"
+        class="text-[#fbbf24] text-3xl font-black tracking-widest font-display drop-shadow-[1.5px_1.5px_0_#7836cf] uppercase"
       >
-        LRC
+        KINTSUGI
       </h3>
     </a>
 
@@ -21,33 +21,33 @@ import SocialIcons from "../socialIcons/socialIcons.jsx";
         class="flex flex-col items-center space-y-2 text-gray-400 lg:flex-row lg:items-start lg:space-y-0 lg:space-x-6"
       >
         <li>
-          <a href="/" class="hover:text-[#552496] font-semibold">Inicio</a>
+          <a href="/" class="hover:text-[#fbbf24] font-semibold transition-colors">Inicio</a>
         </li>
         <li>
-          <a href="/Proyectos" class="hover:text-[#552496] font-semibold"
-            >Proyectos</a>
+          <a href="/servicios" class="hover:text-[#fbbf24] font-semibold transition-colors">Servicios</a>
         </li>
         <li>
-          <a href="/lautaro" class="hover:text-[#552496] font-semibold"
-            >Sobre Mi</a>
+          <a href="/proyectos" class="hover:text-[#fbbf24] font-semibold transition-colors">Proyectos</a>
         </li>
         <li>
-          <a href="/links" class="hover:text-[#552496] font-semibold"
-            >Contacto</a>
+          <a href="/about" class="hover:text-[#fbbf24] font-semibold transition-colors">Sobre Mí</a>
+        </li>
+        <li>
+          <a href="/contact" class="hover:text-[#fbbf24] font-semibold transition-colors">Contacto</a>
         </li>
       </ul>
     </nav>
 
     <!-- Social Media Links -->
-    <div class="flex space-x-4 ">
+    <div class="flex space-x-4">
       <SocialIcons client:visible />
     </div>
   </div>
 
   <!-- Copyright -->
   <div
-    class="w-full border-t border-gray-600 py-10 text-center text-sm text-gray-500"
+    class="w-full border-t border-white/5 py-10 text-center text-xs text-gray-500 uppercase tracking-widest font-bold"
   >
-    lautarodevelops@gmail.com
+    Javier Cuevas © 2026 • Creativos Kintsugi • Diseñado en Bogotá
   </div>
 </footer>

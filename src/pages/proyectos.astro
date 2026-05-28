@@ -7,22 +7,22 @@ import Banner from "../components/commons/banners/banner.astro";
 import { proyectos } from "../data/projectData.js";
 ---
 
-<PlantillaBase titulo="Proyectos - Portafolio de Desarrollo" descripcion="Explora mi galería de proyectos de desarrollo web, que abarca desde aplicaciones Full Stack complejas hasta interfaces de usuario responsivas en el Frontend.">
-  <Hero titulo="Proyectos" />
+<PlantillaBase titulo="Galería Kintsugi - Portafolio de Edición Cinemática" descripcion="Explora el portafolio de Creativos Kintsugi y Javier Cuevas: edición de video viral, suite cinemática 16:9 y campañas de alto impacto.">
+  <Hero titulo="Portafolio Kintsugi" />
 
   <!-- Botones -->
-  <div class="mt-6 mb-6 flex flex-wrap justify-center gap-3 px-2" data-sujeto="FiltrosProyectos" data-predicado="clasificanPor" data-objeto="CategoriasDesarrollo">
-    <button class="filter-btn cursor-pointer rounded-full bg-[#69c7c7] px-5 py-1.5 text-sm font-bold text-[#1d1250] drop-shadow-[2px_2px_0_#7836cf] transition-all duration-150 active:translate-y-0.5 active:drop-shadow-none" data-filter="all">
+  <div class="mt-6 mb-6 flex flex-wrap justify-center gap-3 px-2" data-sujeto="FiltrosProyectos" data-predicado="clasificanPor" data-objeto="CategoriasEdicion">
+    <button class="filter-btn cursor-pointer rounded-full bg-red-600 px-5 py-1.5 text-sm font-bold text-white drop-shadow-[2px_2px_0_#8c0303] transition-all duration-150 active:translate-y-0.5 active:drop-shadow-none hover:bg-red-700" data-filter="all">
       Todos
     </button>
-    <button class="filter-btn cursor-pointer rounded-full bg-[#69c7c7] px-5 py-1.5 text-sm font-bold text-[#1d1250] drop-shadow-[2px_2px_0_#7836cf] transition-all duration-150 active:translate-y-0.5 active:drop-shadow-none" data-filter="fullstack">
-      Full Stack
+    <button class="filter-btn cursor-pointer rounded-full bg-red-600 px-5 py-1.5 text-sm font-bold text-white drop-shadow-[2px_2px_0_#8c0303] transition-all duration-150 active:translate-y-0.5 active:drop-shadow-none hover:bg-red-700" data-filter="viral">
+      Línea de Viralidad (9:16)
     </button>
-    <button class="filter-btn cursor-pointer rounded-full bg-[#69c7c7] px-5 py-1.5 text-sm font-bold text-[#1d1250] drop-shadow-[2px_2px_0_#7836cf] transition-all duration-150 active:translate-y-0.5 active:drop-shadow-none" data-filter="frontend">
-      Frontend
+    <button class="filter-btn cursor-pointer rounded-full bg-red-600 px-5 py-1.5 text-sm font-bold text-white drop-shadow-[2px_2px_0_#8c0303] transition-all duration-150 active:translate-y-0.5 active:drop-shadow-none hover:bg-red-700" data-filter="cinematic">
+      Suite Cinemática (16:9)
     </button>
-    <button class="filter-btn cursor-pointer rounded-full bg-[#69c7c7] px-5 py-1.5 text-sm font-bold text-[#1d1250] drop-shadow-[2px_2px_0_#7836cf] transition-all duration-150 active:translate-y-0.5 active:drop-shadow-none" data-filter="backend">
-      Backend
+    <button class="filter-btn cursor-pointer rounded-full bg-red-600 px-5 py-1.5 text-sm font-bold text-white drop-shadow-[2px_2px_0_#8c0303] transition-all duration-150 active:translate-y-0.5 active:drop-shadow-none hover:bg-red-700" data-filter="commercial">
+      Comerciales y Promos
     </button>
   </div>
 
@@ -54,7 +54,7 @@ import { proyectos } from "../data/projectData.js";
   <div class="flex justify-center mt-8">
     <button
       id="load-more"
-      class="px-6 py-2 cursor-pointer bg-[#69c7c7] text-[#1d1250] font-bold rounded-full hover:bg-[#46caca] drop-shadow-[2px_2px_0_#7836cf] active:translate-y-0.5 active:drop-shadow-none transition-all"
+      class="px-6 py-2 cursor-pointer bg-red-600 text-white font-bold rounded-full hover:bg-red-700 drop-shadow-[2px_2px_0_#8c0303] active:translate-y-0.5 active:drop-shadow-none transition-all"
     >
       Ver más
     </button>

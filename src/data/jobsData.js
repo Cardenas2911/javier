@@ -1,34 +1,33 @@
 export const jobs = [
   {
-    title: "Frontend Developer - Neowyze",
-    time: ["12/2024 - 05/2025"],
+    title: "Director Creativo - Creativos Kintsugi",
+    time: ["2024 - Presente"],
     description:
-      "Mis tareas en Neowyze consisten en desarrollar webs responsivas basadas en diseños proporcionados en Figma, utilizando Astro, React, Tailwind y otras librerías frontend.",
+      "Lidero la estrategia de viralidad y postproducción de video cinematográfico para marcas personales premium, fundadores de startups e infoproductores de alto rendimiento.",
     list: [
-      "Para el flujo de trabajo, utilizo Jira como herramienta de gestión y Git/GitHub como sistema de control de versiones.",
-      "Trabajo bajo la metodología ágil Scrum, con sprints de 2 semanas y dos reuniones diarias (dailies) para planificar el proyecto y presentar avances",
+      "Edición y optimización de ganchos neuro-visuales para retener al espectador en los primeros 3 segundos clave del video.",
+      "Diseño y dirección de sonido inmersivo y corrección de color cinemática, elevando el valor percibido del contenido de nuestros clientes.",
+      "Implementación de la Metodología Kintsugi, transformando grabaciones simples en piezas virales de alto impacto que logran conversiones orgánicas."
     ],
   },
   {
-    title: "Frontend Developer - Vegna",
-    time: ["05/2024 - 02/2024"],
-    description: "Desarrollo y mantenimiento de interfaces de usuario con:",
-    list: ["JavaScript - TypeScript", "React - Next.js", "Tailwind", "Shadcn"],
-  },
-  {
-    title: "Frontend Developer - Igrowker",
-    time: ["07/2022 - 08/2022"],
-    description: "Desarrollo y mantenimiento de interfaces de usuario con",
-    list: ["React - React Router - Context api - CSS - Material UI"],
-  },
-  {
-    title: " Web Developer - NoCountry",
-    time: ["03/2022 - 06/2022"],
+    title: "Estratega de Video Publicitario - Freelance",
+    time: ["2023 - 2024"],
     description:
-      "Desarrollo de aplicaciones web responsivas MVP fullstack usando para su desarrollo tecnologías como",
+      "Diseño, edición y optimización de campañas de anuncios en formato corto (TikTok, Reels, Shorts) y videos UGC de alta conversión para marcas de comercio electrónico e infoproductores.",
     list: [
-      "Frontend : React - React Router - Context api - tailwindcss",
-      "Backend : API REST con Express.js, MongoDB",
+      "Incremento promedio del 35% en la tasa de retención (retention rate) mediante cortes continuos, transiciones invisibles y subtítulos dinámicos.",
+      "Pruebas A/B de ganchos visuales y de audio para potenciar el CTR (Click-Through Rate) de las campañas publicitarias pagadas."
     ],
   },
+  {
+    title: "Editor de Video y Motion Designer - Agencia Digital",
+    time: ["2022 - 2023"],
+    description:
+      "Postproducción audiovisual completa de vlogs, vlogs corporativos y tutoriales, integrando animaciones gráficas (Motion Graphics) pulcras y profesionales.",
+    list: [
+      "Edición multinivel y sincronización de pistas de sonido multicanal, garantizando una inmersión acústica óptima.",
+      "Creación de plantillas animadas y efectos de texto cinéticos reutilizables en After Effects para agilizar la producción de contenido en lote."
+    ],
+  }
 ];

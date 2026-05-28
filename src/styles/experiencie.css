@@ -47,7 +47,7 @@
     transform: translateY(-50%);
     width: 5px;
     height: 70%;
-    background-color: #7836cf;
+    background-color: #ef4444;
     border-radius: 4px;
   }
 }
@@ -90,10 +90,10 @@
 }
 
 .badge {
-  background-color: #7836cf;
+  background-color: #ef4444;
   border-radius: 1000px;
   padding: 2px 12px;
-  border: 1px solid #7836cf;
+  border: 1px solid #ef4444;
   font-size: 0.875rem;
   color: white;
 }

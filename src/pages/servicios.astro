@@ -1,0 +1,442 @@
+---
+// servicios.astro - Portafolio de Edición de Video y Línea de Viralidad Creativos Kintsugi
+import PlantillaBase from "../layouts/PlantillaBase.astro";
+import PreciosKintsugi from "../components/servicios/PreciosKintsugi";
+
+// Videos provistos por el usuario
+const videoHeroFondo = "https://servicebigboys.my.canva.site/_assets/video/1cfc39fd680b1e5bd96187965385a208.mp4";
+
+const videosVerticales = [
+  "https://servicebigboys.my.canva.site/_assets/video/4e4d3d43c6b75148ab7f8b7066b2d092.mp4",
+  "https://servicebigboys.my.canva.site/_assets/video/4dbf2842ad15b88fe52cacb7f3de9fd3.mp4",
+  "https://servicebigboys.my.canva.site/_assets/video/c6b9aadf580cd1c4c721e299c0cb0acc.mp4",
+  "https://servicebigboys.my.canva.site/_assets/video/3732d3e44810097dc4c8ef6bf312240c.mp4",
+  "https://servicebigboys.my.canva.site/_assets/video/c9b4361af69a3a4b09de12bffcb16f82.mp4",
+  "https://servicebigboys.my.canva.site/_assets/video/0a89e6cd72529d3f7485ad5b9f3f630a.mp4",
+  "https://servicebigboys.my.canva.site/_assets/video/dbd9065ef8f95710189805551b7925c9.mp4",
+  "https://servicebigboys.my.canva.site/_assets/video/e2077d16e3fa80baf570a61e3524019c.mp4"
+];
+
+const videosHorizontales = [
+  "https://servicebigboys.my.canva.site/_assets/video/ee3e9c9bb9e529c2421ce95326038c8c.mp4",
+  "https://servicebigboys.my.canva.site/_assets/video/bfc83310c2b682974f270135a5209955.mp4",
+  "https://servicebigboys.my.canva.site/_assets/video/8c6163b136d39e86ae7582b6cff5b2d5.mp4"
+];
+---
+
+<PlantillaBase
+  titulo="Servicios | Creativos Kintsugi - Edición de Video Profesional"
+  descripcion="Línea de Viralidad y Postproducción de video de alto impacto por Javier Cuevas. Edición con ganchos neuro-visuales para Reels, TikTok y YouTube."
+>
+  <!-- Estilos Embebidos Optimizados para la Experiencia Cinemática Kintsugi -->
+  <style>
+    /* Efecto de foco en el portafolio cinematográfico */
+    .portfolio-grid:hover .video-container:not(:hover),
+    .portfolio-grid:hover .video-horizontal:not(:hover) {
+      opacity: 0.25;
+      filter: grayscale(90%) blur(1px);
+    }
+
+    /* Contenedor Vertical Ratio 9:16 */
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-top: 177.77%;
+      background-color: #0d0d0d;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+    }
+    
+    .video-container:hover {
+      transform: scale(1.03) translateY(-4px);
+      border-color: rgba(245, 158, 11, 0.4);
+      box-shadow: 0 30px 60px -15px rgba(245, 158, 11, 0.15);
+      z-index: 10;
+    }
+
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+      transition: opacity 0.4s ease;
+    }
+    
+    .video-container:hover video {
+      opacity: 1;
+    }
+
+    /* Contenedor Horizontal Ratio 16:9 */
+    .video-horizontal {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      background-color: #0d0d0d;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .video-horizontal:hover {
+      transform: scale(1.03) translateY(-4px);
+      border-color: rgba(245, 158, 11, 0.4);
+      box-shadow: 0 30px 60px -15px rgba(245, 158, 11, 0.15);
+      z-index: 10;
+    }
+
+    .video-horizontal video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+      transition: opacity 0.4s ease;
+    }
+
+    .video-horizontal:hover video {
+      opacity: 1;
+    }
+
+    /* Indicador de Play General */
+    .play-indicator {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      border-radius: 50%;
+      padding: 1.25rem;
+      opacity: 1;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: #fbbf24;
+    }
+
+    .video-container:hover .play-indicator,
+    .video-horizontal:hover .play-indicator {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(1.3);
+    }
+
+    /* Gradiente Kintsugi Dorado */
+    .text-gradient-gold {
+      background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+
+  <!-- Hero Section con Background Video Cinematográfico -->
+  <section class="relative min-h-screen flex items-center pt-24 overflow-hidden" data-sujeto="SeccionHeroKintsugi" data-predicado="presentaPropuesta" data-objeto="CreativosKintsugi">
+    <!-- Video de Fondo -->
+    <div class="absolute inset-0 z-0">
+      <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-35 pointer-events-none">
+        <source src={videoHeroFondo} type="video/mp4" />
+      </video>
+      <!-- Overlay degradado cinemático -->
+      <div class="absolute inset-0 bg-gradient-to-b from-gray-950/80 via-gray-950/70 to-gray-950"></div>
+    </div>
+
+    <!-- Resplandores dorados orbitales -->
+    <div class="absolute top-1/4 -left-1/4 w-[450px] h-[450px] bg-amber-500/5 rounded-full blur-[130px] z-0 pointer-events-none"></div>
+    <div class="absolute bottom-1/4 -right-1/4 w-[450px] h-[450px] bg-amber-500/5 rounded-full blur-[130px] z-0 pointer-events-none"></div>
+
+    <div class="w-full max-w-7xl mx-auto px-6 relative z-10">
+      <div class="max-w-4xl space-y-8">
+        <!-- Badge Superior Kintsugi -->
+        <div class="inline-flex items-center gap-3 px-4.5 py-2 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs font-bold uppercase tracking-[0.2em] select-none">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span>
+          Creativos Kintsugi
+        </div>
+
+        <h1 class="text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight text-white leading-tight font-display uppercase">
+          Edición de Video <br />
+          <span class="text-gradient-gold">Javier Cuevas</span>
+        </h1>
+
+        <p class="text-gray-400 text-lg sm:text-2xl font-light max-w-3xl leading-relaxed">
+          Transformo metraje crudo en narrativas inmersivas y contenido de alta retención. Inundamos las redes con tu rostro usando ganchos neuro-visuales para multiplicar tu viralidad.
+        </p>
+
+        <!-- Suite de Edición Detallada (Herramientas Core del Usuario) -->
+        <div class="space-y-4">
+          <p class="text-xs font-bold text-gray-500 uppercase tracking-widest">Mi Suite de Edición de Alto Rendimiento</p>
+          <div class="flex flex-wrap gap-4">
+            <span class="bg-white/[0.02] border border-white/5 text-gray-300 text-xs font-bold px-4 py-2.5 rounded-xl uppercase tracking-widest flex items-center gap-2">
+              <span class="text-indigo-400 font-extrabold">Pr</span> Premiere Pro
+            </span>
+            <span class="bg-white/[0.02] border border-white/5 text-gray-300 text-xs font-bold px-4 py-2.5 rounded-xl uppercase tracking-widest flex items-center gap-2">
+              <span class="text-purple-400 font-extrabold">Ae</span> After Effects
+            </span>
+            <span class="bg-white/[0.02] border border-white/5 text-gray-300 text-xs font-bold px-4 py-2.5 rounded-xl uppercase tracking-widest flex items-center gap-2">
+              <span class="text-cyan-400 font-extrabold">Ps</span> Photoshop CC
+            </span>
+            <span class="bg-white/[0.02] border border-white/5 text-gray-300 text-xs font-bold px-4 py-2.5 rounded-xl uppercase tracking-widest flex items-center gap-2">
+              <span class="text-white font-extrabold">✂️</span> CapCut Pro
+            </span>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+          <a href="#viralidad" class="px-8 py-4.5 rounded-2xl bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 text-black font-extrabold text-sm uppercase tracking-wider transition-all duration-300 shadow-xl shadow-amber-500/15 hover:shadow-amber-500/30 text-center flex items-center justify-center gap-2">
+            Ver Planes de Viralidad
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+          </a>
+          <a href="#portafolio" class="px-8 py-4.5 rounded-2xl border border-white/10 hover:border-amber-500/50 hover:bg-white/[0.02] text-white hover:text-amber-400 font-bold text-sm uppercase tracking-wider transition-all duration-300 text-center">
+            Ver Portafolio de Edición
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Indicador de Scroll -->
+    <div class="absolute bottom-10 left-6 hidden md:flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-gray-500 -rotate-90 origin-left z-10">
+      <span>Deslizar</span>
+      <div class="w-16 h-[1px] bg-gray-800 relative overflow-hidden">
+        <div class="absolute top-0 left-0 h-full w-1/3 bg-amber-500 animate-[pulse_2s_infinite]"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Precios y Paquetes de Viralidad (Kintsugi) -->
+  <section id="viralidad" class="py-32 bg-gray-950/80 border-t border-white/5 relative z-20" data-sujeto="SeccionPrecios" data-predicado="presentaTarifasDe" data-objeto="LineaDeViralidad">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+        <span class="text-xs font-bold text-amber-500 uppercase tracking-[0.3em] font-mono block">Tarifas y Estrategia</span>
+        <h2 class="text-4xl md:text-6xl font-black text-white font-display uppercase tracking-tight">
+          Línea de <span class="text-gradient-gold">Viralidad</span>
+        </h2>
+        <p class="text-gray-400 text-base md:text-lg font-light leading-relaxed">
+          Promesa: "Inundamos las redes con tu rostro usando ganchos neuro-visuales para multiplicar tus probabilidades de viralidad."
+        </p>
+      </div>
+
+      <!-- Componente interactivo de Precios (React 19) -->
+      <PreciosKintsugi client:load />
+    </div>
+  </section>
+
+  <!-- Sección Portafolio de Edición (Horizontal y Vertical) -->
+  <section id="portafolio" class="py-32 bg-black relative z-20" data-sujeto="SeccionPortafolioEdicion" data-predicado="muestraMuestrasDe" data-objeto="PortafolioCinematografico">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-6">
+        <div>
+          <span class="text-xs font-bold text-amber-500 uppercase tracking-[0.3em] font-mono block mb-2">Showcase Audiovisual</span>
+          <h2 class="text-4xl md:text-6xl font-black text-white font-display uppercase">
+            Trabajos <span class="text-gradient-gold">Destacados</span>
+          </h2>
+          <p class="text-gray-400 text-sm mt-3">Coloca tu cursor o mantén presionado en dispositivos móviles para reproducir el metraje en alta retención.</p>
+        </div>
+        <div class="text-right">
+          <p class="text-xs uppercase tracking-widest font-bold text-gray-600">Postproducción Directa</p>
+          <p class="text-3xl font-light text-white font-display">+3 Años <span class="text-amber-500 font-extrabold">Edición</span></p>
+        </div>
+      </div>
+
+      <!-- 1. Formato Horizontal (16:9) -->
+      <div class="mb-28">
+        <h3 class="text-xl md:text-2xl font-bold text-white mb-8 border-b border-white/5 pb-4 flex items-center gap-4">
+          🎥 Formato Horizontal
+          <span class="text-black text-[10px] font-black tracking-widest uppercase bg-amber-500 px-3 py-1 rounded-full">
+            YouTube / Documental / Corporativo
+          </span>
+        </h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 portfolio-grid">
+          {videosHorizontales.map((url, index) => (
+            <div key={index} class="video-horizontal group cursor-pointer">
+              <video src={url} loop muted playsinline preload="metadata" class="hover-play"></video>
+              <div class="play-indicator">
+                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- 2. Formato Vertical (9:16) -->
+      <div>
+        <h3 class="text-xl md:text-2xl font-bold text-white mb-8 border-b border-white/5 pb-4 flex items-center gap-4">
+          📱 Formato Vertical
+          <span class="text-gray-300 text-[10px] font-black tracking-widest uppercase bg-white/10 border border-white/20 px-3 py-1 rounded-full">
+            Reels / TikTok / Shorts
+          </span>
+        </h3>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 portfolio-grid">
+          {videosVerticales.map((url, index) => (
+            <div key={index} class={`video-container cursor-pointer ${index % 2 === 1 ? 'md:mt-8' : ''}`}>
+              <video src={url} loop muted playsinline preload="metadata" class="hover-play"></video>
+              <div class="play-indicator">
+                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Sección de Contacto Cinemático y Captura de Leads Kintsugi -->
+  <section id="contacto-kintsugi" class="py-32 bg-gray-950 border-t border-white/5 relative z-20" data-sujeto="SeccionContactoKintsugi" data-predicado="permiteContactarA" data-objeto="JavierCuevas">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-16 space-y-4">
+        <h2 class="text-4xl md:text-6xl font-black text-white font-display uppercase">
+          Iniciemos el <span class="text-gradient-gold italic">Corte</span>
+        </h2>
+        <p class="text-gray-400 text-lg font-light">
+          Cuéntame sobre tu marca, tu volumen de contenido y escalemos juntos tu retención orgánica.
+        </p>
+      </div>
+
+      <div class="bg-white/[0.01] border border-white/5 p-8 md:p-16 rounded-[2.5rem] relative overflow-hidden backdrop-blur-md">
+        <!-- Acento de oro Kintsugi decorativo -->
+        <div class="absolute top-0 right-0 w-36 h-36 bg-amber-500/10 rounded-bl-full pointer-events-none"></div>
+
+        <form id="kintsugiForm" class="space-y-8 relative z-10">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-2">
+              <label class="block text-[10px] font-bold uppercase tracking-widest text-gray-500">Nombre / Agencia</label>
+              <input 
+                type="text" 
+                required 
+                class="w-full bg-transparent border-b border-white/10 py-3.5 text-white text-base focus:outline-none focus:border-amber-500 transition-colors placeholder-gray-800" 
+                placeholder="Ej. Juan Pérez"
+              />
+            </div>
+            <div class="space-y-2">
+              <label class="block text-[10px] font-bold uppercase tracking-widest text-gray-500">WhatsApp Directo</label>
+              <input 
+                type="tel" 
+                required 
+                class="w-full bg-transparent border-b border-white/10 py-3.5 text-white text-base focus:outline-none focus:border-amber-500 transition-colors placeholder-gray-800" 
+                placeholder="+57 300 000 0000"
+              />
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <label class="block text-[10px] font-bold uppercase tracking-widest text-gray-500">Tus Redes / Enlace a tu Proyecto Actual</label>
+            <input 
+              type="url" 
+              class="w-full bg-transparent border-b border-white/10 py-3.5 text-white text-base focus:outline-none focus:border-amber-500 transition-colors placeholder-gray-800" 
+              placeholder="Ej. @tu_cuenta o tu canal de YouTube"
+            />
+          </div>
+
+          <div class="space-y-2">
+            <label class="block text-[10px] font-bold uppercase tracking-widest text-gray-500">¿Qué volumen de edición necesitas?</label>
+            <select class="w-full bg-transparent border-b border-white/10 py-3.5 text-white text-base focus:outline-none focus:border-amber-500 transition-colors appearance-none cursor-pointer">
+              <option class="bg-gray-950 text-white">Quiero delegar mi edición recurrente (Línea de Viralidad)</option>
+              <option class="bg-gray-950 text-white">Tengo un lanzamiento o proyecto especial</option>
+              <option class="bg-gray-950 text-white">Edición de formato largo (YouTube / Documental)</option>
+              <option class="bg-gray-950 text-white">Quiero una consultoría de retención y B-Roll</option>
+            </select>
+          </div>
+
+          <div class="pt-6">
+            <button 
+              type="submit" 
+              class="w-full bg-white text-black font-black uppercase tracking-widest py-5.5 rounded-2xl hover:bg-amber-500 transition-all duration-300 text-base flex justify-center items-center gap-3 group"
+            >
+              Enviar Propuesta
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal de Éxito de Captura Kintsugi -->
+  <div id="kintsugiModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-gray-900 border border-white/10 p-10 md:p-14 rounded-3xl max-w-lg w-full text-center relative mx-4 transform scale-95 transition-transform duration-300 shadow-2xl">
+      <div class="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_30px_rgba(245,158,11,0.3)]">
+        <svg class="w-8 h-8 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <h3 class="text-2xl font-black text-white font-display uppercase mb-3">Mensaje Recibido</h3>
+      <p class="text-gray-400 mb-8 text-sm font-light leading-relaxed">
+        He recibido tus datos correctamente. Analizaré tu canal o redes y me pondré en contacto contigo directamente por WhatsApp para diseñar tu estrategia de viralidad.
+      </p>
+      <button id="closeKintsugiModal" class="bg-white text-black font-bold uppercase tracking-widest px-8 py-3.5 rounded-xl hover:bg-amber-500 transition-colors w-full text-sm">
+        Cerrar Ventana
+      </button>
+    </div>
+  </div>
+
+  <!-- Script de Interacción y Reproducción al Hover de Videos -->
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const videos = document.querySelectorAll(".hover-play");
+      
+      videos.forEach(video => {
+        video.pause();
+        
+        video.parentElement.addEventListener("mouseenter", () => {
+          video.play().catch(e => console.log("Autoplay detenido o esperando interacción", e));
+        });
+        
+        video.parentElement.addEventListener("mouseleave", () => {
+          video.pause();
+        });
+
+        video.parentElement.addEventListener("touchstart", () => {
+          if (video.paused) {
+            videos.forEach(v => { if (v !== video) v.pause(); });
+            video.play();
+          } else {
+            video.pause();
+          }
+        }, { passive: true });
+      });
+
+      // Lógica de Formulario
+      const form = document.getElementById("kintsugiForm");
+      const modal = document.getElementById("kintsugiModal");
+      const closeBtn = document.getElementById("closeKintsugiModal");
+
+      if (form && modal && closeBtn) {
+        form.addEventListener("submit", function(e) {
+          e.preventDefault();
+          modal.classList.remove("hidden");
+          setTimeout(() => {
+            modal.classList.remove("opacity-0");
+            modal.firstElementChild.classList.remove("scale-95");
+            modal.firstElementChild.classList.add("scale-100");
+          }, 10);
+          this.reset();
+        });
+
+        closeBtn.addEventListener("click", function() {
+          modal.classList.add("opacity-0");
+          modal.firstElementChild.classList.remove("scale-100");
+          modal.firstElementChild.classList.add("scale-95");
+          setTimeout(() => {
+            modal.classList.add("hidden");
+          }, 300);
+        });
+      }
+    });
+  </script>
+</PlantillaBase>

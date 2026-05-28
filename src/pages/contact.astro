@@ -5,17 +5,17 @@ import CopyMail from "../components/links/copyMail.jsx";
 
 const links = [
   {
-    href: "https://www.linkedin.com/in/lautaro-rodr%C3%ADguez-collins-40505624a/",
-    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/javier-cuevas-kintsugi/",
+    label: "LinkedIn Profesional",
     objeto: "PerfilLinkedIn",
   },
-  { href: "https://github.com/Lautaro-R-collins", label: "GitHub", objeto: "PerfilGitHub" },
-  { href: "https://x.com/lautarodevelops/", label: "Twitter", objeto: "PerfilTwitter" },
-  { href: "mailto:lautarodevelops@gmail.com", label: "Email", objeto: "CorreoElectronico" },
+  { href: "https://instagram.com/creativoskintsugi", label: "Instagram (Portafolio de Reels)", objeto: "PerfilInstagram" },
+  { href: "https://wa.me/573000000000", label: "WhatsApp Directo (Agendar Llamada)", objeto: "PerfilWhatsApp" },
+  { href: "mailto:contacto@creativoskintsugi.com", label: "Enviar Correo Electrónico", objeto: "CorreoElectronico" },
 ];
 ---
 
-<PlantillaBase titulo="Contacto - Lautaro Rodríguez Collins" descripcion="Ponte en contacto conmigo para discutir nuevas oportunidades, proyectos de desarrollo de software o colaboraciones profesionales.">
+<PlantillaBase titulo="Contacto - Javier Cuevas | Creativos Kintsugi" descripcion="Ponte en contacto con Javier Cuevas, estratega de viralidad y editor de video cinematográfico en Creativos Kintsugi.">
   <section
     class="bg-gray-900 flex min-h-screen flex-col items-center justify-center px-6"
     data-sujeto="SeccionContacto"
@@ -28,11 +28,11 @@ const links = [
           <!-- Foto con borde -->
           <img
             src={MiFoto.src}
-            alt="Foto de Lautaro"
+            alt="Foto de Javier Cuevas"
             class="border-primary h-32 w-32 rounded-full shadow-lg"
             data-sujeto="FotoPerfil"
             data-predicado="representaA"
-            data-objeto="LautaroRodriguez"
+            data-objeto="JavierCuevas"
           />
 
           <!-- Texto circular alrededor de la foto -->
@@ -44,9 +44,9 @@ const links = [
               id="circlePathText"
               d="M100,100 m-77,0 a77,77 0 1,1 154,0 a77,77 0 1,1 -154,0"
               fill="none"></path>
-            <text fill="#69c7c7" font-size="18" font-weight="bold">
+            <text fill="#ef4444" font-size="16" font-weight="bold">
               <textPath href="#circlePathText" startOffset="0%">
-                ✦ Hola ! ✦ Estoy disponible para nuevas oportunidades!
+                ✦ KINTSUGI ✦ VIDEO VIRAL ✦ EDICIÓN CINEMÁTICA ✦
               </textPath>
             </text>
           </svg>
@@ -64,7 +64,7 @@ const links = [
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            class="block font-bold w-full rounded-lg bg-primary hover:bg-secondary drop-shadow-[2px_2px_0_#0debd8] px-6 py-3 text-center text-white transition "
+            class="block font-bold w-full rounded-lg bg-primary hover:bg-secondary drop-shadow-[2px_2px_0_#ef4444] px-6 py-3 text-center text-white transition "
             data-sujeto="EnlaceContacto"
             data-predicado="conectaCon"
             data-objeto={link.objeto}

@@ -31,28 +31,28 @@ export default function ConsolaInteractiva() {
       nombre: 'Modularidad (Componentes)',
       abreviatura: 'M',
       nivel: modularidad,
-      color: 'from-indigo-500 to-indigo-600 shadow-indigo-500/25',
+      color: 'from-red-500 to-red-600 shadow-red-500/25',
       descripcion: 'Separa la lógica de negocio y la interfaz en componentes atómicos. Facilita la reutilización y las pruebas unitarias.',
     },
     {
       nombre: 'Alto Rendimiento',
       abreviatura: 'A',
       nivel: altoRendimiento,
-      color: 'from-cyan-400 to-cyan-500 shadow-cyan-500/25',
+      color: 'from-red-600 to-red-700 shadow-red-600/25',
       descripcion: 'Carga instantánea de páginas. Astro renderiza HTML estático por defecto, enviando JavaScript solo cuando es necesario mediante islas.',
     },
     {
       nombre: 'Estructura Limpia',
       abreviatura: 'E',
       nivel: estructuraLimpia,
-      color: 'from-purple-500 to-purple-600 shadow-purple-500/25',
+      color: 'from-neutral-600 to-neutral-700 shadow-neutral-600/25',
       descripcion: 'Estructura jerárquica limpia con flujos de datos unidereccionales claros. Facilita el mantenimiento a gran escala y la colaboración.',
     },
     {
       nombre: 'Seguridad y Robustez',
       abreviatura: 'S',
       nivel: seguridadEstricta,
-      color: 'from-emerald-400 to-emerald-500 shadow-emerald-500/25',
+      color: 'from-red-800 to-neutral-900 shadow-red-800/25',
       descripcion: 'Garantiza la inmutabilidad de los datos, tipado estricto en TypeScript y protección contra fallos inesperados en el cliente.',
     },
   ];
@@ -64,10 +64,10 @@ export default function ConsolaInteractiva() {
 
   // Determinar la etiqueta de rendimiento según la puntuación
   const obtenerEtiquetaRendimiento = (puntuacion: number) => {
-    if (puntuacion >= 90) return { texto: 'Clase Mundial', color: 'text-cyan-400' };
-    if (puntuacion >= 80) return { texto: 'Excelente', color: 'text-indigo-400' };
-    if (puntuacion >= 70) return { texto: 'Buen Estado', color: 'text-emerald-400' };
-    return { texto: 'Requiere Optimización', color: 'text-amber-400' };
+    if (puntuacion >= 90) return { texto: 'Clase Mundial', color: 'text-red-500' };
+    if (puntuacion >= 80) return { texto: 'Excelente', color: 'text-red-400' };
+    if (puntuacion >= 70) return { texto: 'Buen Estado', color: 'text-neutral-300' };
+    return { texto: 'Requiere Optimización', color: 'text-neutral-500' };
   };
 
   const etiquetaActual = obtenerEtiquetaRendimiento(puntuacionTotal);
@@ -80,8 +80,8 @@ export default function ConsolaInteractiva() {
       data-objeto="MadurezMetricas"
     >
       {/* Luces decorativas de fondo */}
-      <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-indigo-500/5 blur-[80px] pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-cyan-500/5 blur-[80px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-red-500/5 blur-[80px] pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-red-800/5 blur-[80px] pointer-events-none"></div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Lado izquierdo: Control de Pilares */}
@@ -96,10 +96,10 @@ export default function ConsolaInteractiva() {
             <div className="p-4 rounded-2xl bg-gray-900/40 border border-gray-800 hover:border-gray-700/60 transition-colors">
               <div className="flex justify-between items-center mb-2">
                 <label className="text-sm font-semibold text-gray-300 flex items-center gap-2">
-                  <span className="w-6 h-6 rounded bg-indigo-500/20 text-indigo-400 text-xs flex items-center justify-center font-bold font-mono">M</span>
+                  <span className="w-6 h-6 rounded bg-red-500/20 text-red-400 text-xs flex items-center justify-center font-bold font-mono">M</span>
                   Modularidad
                 </label>
-                <span className="text-sm font-bold text-indigo-300">{modularidad}%</span>
+                <span className="text-sm font-bold text-red-400">{modularidad}%</span>
               </div>
               <input
                 type="range"
@@ -107,7 +107,7 @@ export default function ConsolaInteractiva() {
                 max="100"
                 value={modularidad}
                 onChange={(evento) => establecerModularidad(Number(evento.target.value))}
-                className="w-full h-1.5 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-indigo-500 focus:outline-none"
+                className="w-full h-1.5 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-red-500 focus:outline-none"
               />
             </div>
 
@@ -115,10 +115,10 @@ export default function ConsolaInteractiva() {
             <div className="p-4 rounded-2xl bg-gray-900/40 border border-gray-800 hover:border-gray-700/60 transition-colors">
               <div className="flex justify-between items-center mb-2">
                 <label className="text-sm font-semibold text-gray-300 flex items-center gap-2">
-                  <span className="w-6 h-6 rounded bg-cyan-500/20 text-cyan-400 text-xs flex items-center justify-center font-bold font-mono">A</span>
+                  <span className="w-6 h-6 rounded bg-red-600/20 text-red-400 text-xs flex items-center justify-center font-bold font-mono">A</span>
                   Alto Rendimiento
                 </label>
-                <span className="text-sm font-bold text-cyan-300">{altoRendimiento}%</span>
+                <span className="text-sm font-bold text-red-400">{altoRendimiento}%</span>
               </div>
               <input
                 type="range"
@@ -126,7 +126,7 @@ export default function ConsolaInteractiva() {
                 max="100"
                 value={altoRendimiento}
                 onChange={(evento) => establecerAltoRendimiento(Number(evento.target.value))}
-                className="w-full h-1.5 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-cyan-400 focus:outline-none"
+                className="w-full h-1.5 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-red-600 focus:outline-none"
               />
             </div>
 
@@ -134,10 +134,10 @@ export default function ConsolaInteractiva() {
             <div className="p-4 rounded-2xl bg-gray-900/40 border border-gray-800 hover:border-gray-700/60 transition-colors">
               <div className="flex justify-between items-center mb-2">
                 <label className="text-sm font-semibold text-gray-300 flex items-center gap-2">
-                  <span className="w-6 h-6 rounded bg-purple-500/20 text-purple-400 text-xs flex items-center justify-center font-bold font-mono">E</span>
+                  <span className="w-6 h-6 rounded bg-neutral-700/25 text-neutral-400 text-xs flex items-center justify-center font-bold font-mono">E</span>
                   Estructura Limpia
                 </label>
-                <span className="text-sm font-bold text-purple-300">{estructuraLimpia}%</span>
+                <span className="text-sm font-bold text-neutral-400">{estructuraLimpia}%</span>
               </div>
               <input
                 type="range"
@@ -145,7 +145,7 @@ export default function ConsolaInteractiva() {
                 max="100"
                 value={estructuraLimpia}
                 onChange={(evento) => establecerEstructuraLimpia(Number(evento.target.value))}
-                className="w-full h-1.5 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-purple-500 focus:outline-none"
+                className="w-full h-1.5 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-neutral-500 focus:outline-none"
               />
             </div>
 
@@ -153,10 +153,10 @@ export default function ConsolaInteractiva() {
             <div className="p-4 rounded-2xl bg-gray-900/40 border border-gray-800 hover:border-gray-700/60 transition-colors">
               <div className="flex justify-between items-center mb-2">
                 <label className="text-sm font-semibold text-gray-300 flex items-center gap-2">
-                  <span className="w-6 h-6 rounded bg-emerald-500/20 text-emerald-400 text-xs flex items-center justify-center font-bold font-mono">S</span>
+                  <span className="w-6 h-6 rounded bg-red-800/20 text-red-400 text-xs flex items-center justify-center font-bold font-mono">S</span>
                   Seguridad y Robustez
                 </label>
-                <span className="text-sm font-bold text-emerald-300">{seguridadEstricta}%</span>
+                <span className="text-sm font-bold text-red-400">{seguridadEstricta}%</span>
               </div>
               <input
                 type="range"
@@ -164,7 +164,7 @@ export default function ConsolaInteractiva() {
                 max="100"
                 value={seguridadEstricta}
                 onChange={(evento) => establecerSeguridadEstricta(Number(evento.target.value))}
-                className="w-full h-1.5 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-emerald-400 focus:outline-none"
+                className="w-full h-1.5 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-red-800 focus:outline-none"
               />
             </div>
           </div>
@@ -191,7 +191,7 @@ export default function ConsolaInteractiva() {
                   cx="72"
                   cy="72"
                   r="62"
-                  className="stroke-indigo-500 transition-all duration-300 ease-out fill-none"
+                  className="stroke-red-500 transition-all duration-300 ease-out fill-none"
                   strokeWidth="8"
                   strokeDasharray="390"
                   strokeDashoffset={390 - (390 * puntuacionTotal) / 100}
@@ -217,7 +217,7 @@ export default function ConsolaInteractiva() {
                   onClick={() => establecerPilarSeleccionado(pilar.abreviatura)}
                   className={`w-9 h-9 rounded-lg font-bold text-sm transition-all duration-200 ${
                     pilarSeleccionado === pilar.abreviatura
-                      ? 'bg-gradient-to-r from-indigo-500 to-cyan-500 text-white shadow-md'
+                      ? 'bg-gradient-to-r from-red-500 to-red-700 text-white shadow-md'
                       : 'bg-gray-850 hover:bg-gray-800 text-gray-400 hover:text-white'
                   }`}
                 >

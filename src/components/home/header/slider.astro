@@ -1,36 +1,29 @@
 ---
-const technologies = [
-  "astro",
-  "react",
-  "typeScript",
-  "tailwindcss",
-  "nodejs",
-  "HTML5",
-  "CSS3",
-  "javaScript",
-  "git",
-  "supabase",
-  "mysql",
-  "bash",
+const pillars = [
+  { text: "EDICIÓN CINEMÁTICA", emoji: "🎬" },
+  { text: "REELS & TIKTOKS VIRALES", emoji: "🔥" },
+  { text: "GANCHOS NEURO-VISUALES", emoji: "🧠" },
+  { text: "DISEÑO SONORO INMERSIVO", emoji: "🔊" },
+  { text: "CORRECCIÓN DE COLOR CINEMÁTICA", emoji: "🎨" },
+  { text: "METODOLOGÍA MAES", emoji: "⚡" },
+  { text: "ESTRATEGIA DE RETENCIÓN", emoji: "📈" },
+  { text: "ANUNCIOS DE ALTO IMPACTO", emoji: "🚀" },
+  { text: "DOCUMENTALES DE MARCA", emoji: "🎥" },
 ];
 ---
 
-<div class="relative overflow-x-hidden px-8 py-8">
-  <div class="animate-scroll hover:animate-paused flex w-max gap-12 md:gap-20">
+<div class="relative overflow-x-hidden px-4 py-6 bg-black/60 border-y border-gray-900">
+  <div class="animate-scroll hover:animate-paused flex w-max gap-16 md:gap-24 items-center">
     {
-      technologies.concat(technologies, technologies).map((tech) => (
-        <div class="group flex items-center gap-2 transition-all duration-300">
-          <img
-            src={`/svg/${tech}.svg`}
-            alt={tech}
-            class="h-7 w-auto object-contain  transition-transform group-hover:scale-110"
-            width="30"
-            height="30"
-            loading="lazy"
-          />
-          <span class="text-lg font-medium text-white">
-            {tech.charAt(0).toUpperCase() + tech.slice(1)}
+      pillars.concat(pillars, pillars).map((pillar) => (
+        <div class="group flex items-center gap-3 transition-all duration-300">
+          <span class="text-2xl filter drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]">
+            {pillar.emoji}
           </span>
+          <span class="text-base md:text-lg font-black tracking-wider text-white hover:text-[#ef4444] transition-colors select-none font-mono">
+            {pillar.text}
+          </span>
+          <span class="text-[#ef4444] font-bold text-xl ml-4">•</span>
         </div>
       ))
     }

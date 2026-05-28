@@ -1,32 +1,32 @@
 ---
 import ServiceCard from "./ServiceCard.astro";
-import { FaLaptopCode, FaBolt, FaRocket } from "react-icons/fa"; 
+import { FaVideo, FaBolt, FaRocket } from "react-icons/fa"; 
 ---
 
 <section class="site-container mt-14 mx-auto max-w-6xl px-4">
 	<h2
 		class="text-4xl font-bold flex flex-col items-center gap-6 text-center whitespace-nowrap text-white md:flex-row md:items-center md:text-end"
 	>
-		<span class="hidden h-1.5 grow rounded-lg drop-shadow-[2px_2px_0_#0debd8] bg-[#7836cf] md:block"></span>
-		<span class="drop-shadow-[2px_2px_0_#7836cf]">Servicios</span>
+		<span class="hidden h-1.5 grow rounded-lg drop-shadow-[2px_2px_0_#ef4444] bg-red-650 md:block"></span>
+		<span class="drop-shadow-[2px_2px_0_#8c0303]">Especialidades</span>
 	</h2>
 
 	<div class="mt-10 grid gap-6 md:grid-cols-3">
 		<ServiceCard
-			icon={FaLaptopCode}
-			title="Desarrollo Web Responsivo"
-			description="Construcción de sitios web modernos, adaptados a dispositivos móviles, optimizados y con tecnologías actuales."
+			icon={FaBolt}
+			title="Viralidad Dinámica (9:16)"
+			description="Videos cortos y dinámicos para TikTok, Reels y Shorts. Optimizados con ganchos neuro-visuales de 3 segundos para vencer el scroll instantáneo."
 		/>
 		<ServiceCard
-			icon={FaBolt}
-			title="Frontend"
-			description="Desarrollo de interfaces modernas, rápidas y accesibles que ofrecen una experiencia de usuario intuitiva y atractiva."
+			icon={FaVideo}
+			title="Narrativa Cinemática (16:9)"
+			description="Edición cinemática de largo formato para YouTube, vlogs corporativos y cursos. Con diseño sonoro inmersivo y corrección de color única."
 		/>
 
 		<ServiceCard
 			icon={FaRocket}
-			title="Backend"
-			description="Rendimiento rápido, mejores prácticas de accesibilidad y optimización de procesos en el servidor."
+			title="Promocionales de Impacto"
+			description="Anuncios y teasers para lanzamientos de infoproductos y startups, estructurados bajo psicología de ventas para maximizar retención y CTR."
 		/>
 	</div>
 </section>

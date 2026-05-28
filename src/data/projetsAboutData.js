@@ -1,37 +1,18 @@
-import urbanStyle from "../assets/img-projects/urbanStyle.png";
-import imgNote from "../assets/img-projects/note-app.png";
-import ReactEcommerce from "../assets/img-projects/ecommers.jpg";
-import VintageTone from "../assets/img-projects/vintageToneApp.jpg";
-
 export const proyectos = [
-    {
-    titulo: "Vintage Tone",
-    imagen: VintageTone.src,
-    tecnologias: ["Vue.js", "Tailwind", "Express", "MongoDB"],
-    demo: "https://vintage-tone-front-vue.vercel.app",
-    codigo: "https://github.com/Lautaro-R-collins/VintageTone-Front-Vue.git",
-    categoria: "fullstack",
+  {
+    titulo: "Línea de Viralidad: Campaña de 24 Videos Cortos",
+    imagen: "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=600&auto=format&fit=crop",
+    tecnologias: ["Ganchos Neuro-Visuales", "Edición Dinámica (9:16)", "Subtítulos Kinetic", "Foley & SFX"],
+    demo: "/proyectos",
+    codigo: "/contact",
+    categoria: "Viralidad",
   },
   {
-    titulo: "React Tiendita",
-    imagen: ReactEcommerce.src,
-    tecnologias: ["React", "Tailwind", "Node.js" ,"Express", "MongoDB", "jwt"],
-    demo: "https://react-e-commerce-three-phi.vercel.app",
-    codigo: "https://github.com/Lautaro-R-collins/React-E-commerce.git",
-  },
-  {
-    titulo: "E-commerce Urban Style",
-    descripcion: "Descripción breve del proyecto 1.",
-    imagen: urbanStyle.src,
-    tecnologias: ["React", "Tailwind", "Firebase"],
-    demo: "https://proyecto-final-rodriguez-sable.vercel.app/",
-    codigo: "https://github.com/Lautaro-R-collins/ProyectoFinal-Rodriguez.git",
-  },
-  {
-    titulo: "API REST para Ecommerce",
-    imagen: "https://miro.medium.com/1*47S4iWVwTicFkFL4-Z4uAA.png",
-    tecnologias: ["Express", "Node.js", "MongoDB", "Mongoose"],
-    demo: "https://react-e-commerce-three-phi.vercel.app/",
-    codigo: "https://github.com/Lautaro-R-collins/ApiRest-Ecommerce.git",
-  },
+    titulo: "Documental de Marca: El Despertar del Fundador",
+    imagen: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=600&auto=format&fit=crop",
+    tecnologias: ["Estructura Narrativa", "Color Grading", "Diseño Sonoro Inmersivo", "Edición 16:9"],
+    demo: "/proyectos",
+    codigo: "/contact",
+    categoria: "Cinemático",
+  }
 ];

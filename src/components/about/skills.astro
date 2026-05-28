@@ -3,42 +3,30 @@
     <h2
       class="text-4xl font-bold flex flex-col items-center gap-6 text-center whitespace-nowrap text-white md:flex-row md:items-center md:text-start"
     >
-      <span class="drop-shadow-[2px_2px_0_#7836cf]">Tecnologias</span>
+      <span class="drop-shadow-[2px_2px_0_#8c0303]">Herramientas y Habilidades</span>
       <span
-        class="hidden h-1.5 grow rounded-lg drop-shadow-[2px_2px_0_#0debd8] bg-[#7836cf] md:block"
+        class="hidden h-1.5 grow rounded-lg drop-shadow-[2px_2px_0_#ef4444] bg-red-650 md:block"
       ></span>
     </h2>
   </div>
   <div class="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
     {
       [
-        { name: "HTML", icon: "html5" },
-        { name: "CSS", icon: "css3" },
-        { name: "JavaScript", icon: "javascript" },
-        { name: "TypeScript", icon: "typescript" },
-        { name: "Python", icon: "python" },
-        { name: "React", icon: "react" },
-        { name: "Vue", icon: "vuejs" },
-        { name: "Astro", icon: "astro" },
-        { name: "Next.js", icon: "nextjs" },
-        { name: "Tailwind", icon: "tailwindcss" },
-        { name: "Node.js", icon: "nodejs" },
-        { name: "Express", icon: "express" },
-        { name: "MongoDB", icon: "mongodb" },
-        { name: "MySQL", icon: "mysql" },
-        { name: "PostgreSQL", icon: "postgresql" },
-        { name: "Git", icon: "git" },
+        { name: "DaVinci Resolve", category: "Color Grading" },
+        { name: "Adobe Premiere", category: "Postproducción" },
+        { name: "After Effects", category: "VFX & Motion" },
+        { name: "Adobe Audition", category: "Diseño Sonoro" },
+        { name: "Photoshop / AI", category: "Assets & Miniaturas" },
+        { name: "CapCut Pro", category: "Edición Rápida" },
+        { name: "Storytelling", category: "Ganchos Neuro-Visuales" },
+        { name: "Sound Design", category: "Efectos Foley & SFX" },
       ].map((skill) => (
         <div class="relative group">
-          <div class="absolute inset-0 -z-10 rounded-lg  blur-3xl opacity-0 transition-opacity group-hover:opacity-100" />
+          <div class="absolute inset-0 -z-10 rounded-lg blur-2xl opacity-0 transition-opacity bg-red-600/10 group-hover:opacity-100" />
 
-          <div class="flex flex-col items-center bg-gray-900 p-4 drop-shadow-[4px_4px_0_#7836cf] rounded-lg shadow-md transition-transform hover:scale-105">
-            <img
-              src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-original.svg`}
-              alt={skill.name}
-              class="w-12 h-12"
-            />
-            <p class="mt-2 text-white text-lg font-semibold drop-shadow-[1px_1px_0_#7836cf]">{skill.name}</p>
+          <div class="flex flex-col items-center justify-center bg-gray-900 border border-gray-800 p-6 drop-shadow-[4px_4px_0_#8c0303] rounded-lg shadow-md transition-transform hover:scale-105 min-h-[120px]">
+            <p class="text-white text-lg font-bold drop-shadow-[1px_1px_0_#ef4444] text-center">{skill.name}</p>
+            <span class="mt-2 text-xs font-mono text-gray-400 tracking-wider uppercase">{skill.category}</span>
           </div>
         </div>
       ))

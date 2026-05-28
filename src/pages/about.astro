@@ -1,0 +1,22 @@
+---
+import PlantillaBase from "../layouts/PlantillaBase.astro";
+import Hero from "../components/commons/hero/hero.astro";
+import AboutMe from "../components/about/aboutMe.astro";
+import Experience from "../components/about/experience.astro";
+import Features from "../components/about/features.astro";
+import Skills from "../components/about/skills.astro";
+import FaqsAbout from "../components/about/FaqsAbout.jsx";
+import BannerGithub from "../components/about/bannerGithub.astro";
+import Banner from "../components/commons/banners/banner.astro";
+---
+
+<PlantillaBase titulo="Sobre Mí - Trayectoria Profesional" descripcion="Conoce más sobre mi trayectoria como desarrollador, mis habilidades técnicas, experiencia profesional y los valores que impulsan mi trabajo.">
+  <Hero titulo="Sobre Mi" />
+  <AboutMe />
+  <Experience />
+  <Features />
+  <Skills />
+  <FaqsAbout client:visible/>
+  <BannerGithub />
+  <Banner />
+</PlantillaBase>

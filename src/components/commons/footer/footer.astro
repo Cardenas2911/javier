@@ -1,5 +1,6 @@
 ---
 import SocialIcons from "../socialIcons/socialIcons.jsx";
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <footer class="bg-gray-950 text-white border-t border-white/5">
@@ -7,7 +8,7 @@ import SocialIcons from "../socialIcons/socialIcons.jsx";
     class="container mx-auto flex flex-col items-center justify-between px-6 py-12 lg:flex-row lg:px-20"
   >
     <!-- Logo -->
-    <a href="/" class="flex items-center">
+    <a href={baseUrl} class="flex items-center">
       <h3
         class="text-[#ef4444] text-3xl font-black tracking-widest font-display drop-shadow-[1.5px_1.5px_0_#8c0303] uppercase"
       >
@@ -21,19 +22,19 @@ import SocialIcons from "../socialIcons/socialIcons.jsx";
         class="flex flex-col items-center space-y-2 text-gray-400 lg:flex-row lg:items-start lg:space-y-0 lg:space-x-6"
       >
         <li>
-          <a href="/" class="hover:text-[#ef4444] font-semibold transition-colors">Inicio</a>
+          <a href={baseUrl} class="hover:text-[#ef4444] font-semibold transition-colors">Inicio</a>
         </li>
         <li>
-          <a href="/servicios" class="hover:text-[#ef4444] font-semibold transition-colors">Servicios</a>
+          <a href={`${baseUrl}servicios`} class="hover:text-[#ef4444] font-semibold transition-colors">Servicios</a>
         </li>
         <li>
-          <a href="/proyectos" class="hover:text-[#ef4444] font-semibold transition-colors">Proyectos</a>
+          <a href={`${baseUrl}proyectos`} class="hover:text-[#ef4444] font-semibold transition-colors">Proyectos</a>
         </li>
         <li>
-          <a href="/about" class="hover:text-[#ef4444] font-semibold transition-colors">Sobre Mí</a>
+          <a href={`${baseUrl}about`} class="hover:text-[#ef4444] font-semibold transition-colors">Sobre Mí</a>
         </li>
         <li>
-          <a href="/contact" class="hover:text-[#ef4444] font-semibold transition-colors">Contacto</a>
+          <a href={`${baseUrl}contact`} class="hover:text-[#ef4444] font-semibold transition-colors">Contacto</a>
         </li>
       </ul>
     </nav>

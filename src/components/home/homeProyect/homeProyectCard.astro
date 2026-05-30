@@ -10,6 +10,10 @@ export interface Props {
 }
 
 const { titulo, imagen, tecnologias, demo, codigo } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+
+const targetDemo = (demo.startsWith('/') && !demo.startsWith('http')) ? `${baseUrl}${demo.slice(1)}` : demo;
+const targetCodigo = (codigo.startsWith('/') && !codigo.startsWith('http')) ? `${baseUrl}${codigo.slice(1)}` : codigo;
 ---
 
 <div
@@ -36,14 +40,14 @@ const { titulo, imagen, tecnologias, demo, codigo } = Astro.props;
 
     <div class="mt-auto flex justify-between gap-3">
       <a
-        href={demo}
+        href={targetDemo}
         class="w-full text-center border border-[#ef4444] text-[#ef4444] py-1.5 rounded-md text-sm font-semibold hover:bg-[#ef4444] hover:text-white transition-colors"
       >
         Ver Caso
       </a>
 
       <a
-        href={codigo}
+        href={targetCodigo}
         class="w-full text-center border border-[#ef4444] text-[#ef4444] py-1.5 rounded-md text-sm font-semibold hover:bg-[#ef4444] hover:text-white transition-colors"
       >
         Estrategia

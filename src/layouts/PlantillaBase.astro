@@ -8,9 +8,10 @@ import Footer from '../components/commons/footer/footer.astro';
 interface Props {
   titulo: string;
   descripcion?: string;
+  noindex?: boolean;
 }
 
-const { titulo, descripcion = "Portafolio profesional optimizado con Metodología MAES, Astro, React, Tailwind CSS y telemetría de Sentry" } = Astro.props;
+const { titulo, descripcion = "Portafolio profesional optimizado con Metodología MAES, Astro, React, Tailwind CSS y telemetría de Sentry", noindex = false } = Astro.props;
 
 // Inicialización de Sentry en el Servidor (Priorizando Seguridad y Observabilidad)
 inicializarSentry();
@@ -27,7 +28,7 @@ inicializarSentry();
     <!-- Metaetiquetas SEO -->
     <title>{titulo} | Portafolio Profesional</title>
     <meta name="description" content={descripcion} />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
     
     <!-- Tipografías Premium desde Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

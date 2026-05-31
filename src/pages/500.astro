@@ -1,0 +1,33 @@
+---
+import PlantillaBase from "../layouts/PlantillaBase.astro";
+---
+
+<PlantillaBase titulo="Error del Servidor (Error 500)" descripcion="Ha ocurrido un error en el servidor. Estamos trabajando para solucionarlo." noindex={true}>
+  <section
+    class="bg-gray-900 min-h-screen flex flex-col items-center justify-center px-6 text-center"
+    data-sujeto="Seccion500"
+    data-predicado="indicaError"
+    data-objeto="ErrorInternoServidor"
+  >
+    <h1
+      class="text-7xl md:text-8xl font-extrabold text-[#FFD700] drop-shadow-[3px_3px_0_#b39700] mb-6"
+    >
+      500
+    </h1>
+
+    <h2 class="text-2xl md:text-3xl text-white font-semibold mb-6">
+      Fallo en la Renderización
+    </h2>
+
+    <p class="text-white/80 max-w-md mx-auto mb-10 font-bold">
+      Los servidores de Kintsugi están experimentando problemas técnicos en la postproducción. Inténtalo de nuevo más tarde o vuelve a la escena inicial.
+    </p>
+
+    <a
+      href={import.meta.env.BASE_URL}
+      class="rounded-full bg-[#FFD700] text-black px-8 py-3 text-lg font-bold drop-shadow-[3px_3px_0_#b39700] transition-all duration-150 active:translate-y-0.5 active:drop-shadow-none"
+    >
+      Volver al inicio
+    </a>
+  </section>
+</PlantillaBase>

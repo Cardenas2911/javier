@@ -1,16 +1,13 @@
 ---
 import { FiMenu, FiX } from "react-icons/fi";
-import NotificationBell from "./notificationBell.jsx";
 import { FaLinkedinIn, FaInstagram } from "react-icons/fa6";
 
 const baseUrl = import.meta.env.BASE_URL;
 
 const links = [
-  { name: "Inicio", href: baseUrl },
-  { name: "Servicios", href: `${baseUrl}servicios` },
-  { name: "Proyectos", href: `${baseUrl}proyectos` },
-  { name: "Sobre Mi", href: `${baseUrl}about` },
-  { name: "Contacto", href: `${baseUrl}contact` },
+  { name: "Proyectos", href: `${baseUrl}#proyectos` },
+  { name: "Mi Perfil", href: `${baseUrl}#perfil` },
+  { name: "Colaborar", href: `${baseUrl}#contacto` },
 ];
 ---
 
@@ -48,7 +45,6 @@ const links = [
         }
 
         <li class="flex items-center gap-3">
-          <NotificationBell client:visible />
 
           <a
             href="https://www.linkedin.com/in/javier-cuevas-kintsugi/"
@@ -74,7 +70,6 @@ const links = [
 
       <!-- Mobile right-side icons -->
       <div class="flex md:hidden items-center gap-4 z-50">
-        <NotificationBell client:visible />
         <label for="menu-toggle" class="cursor-pointer">
           <FiMenu className="h-7 w-7 text-white peer-checked:hidden" />
           <FiX className="h-7 w-7 text-white hidden peer-checked:block" />

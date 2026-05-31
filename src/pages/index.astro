@@ -1,65 +1,571 @@
 ---
-// index.astro - Página de Inicio Premium del Portafolio bajo Metodología MAES
 import PlantillaBase from "../layouts/PlantillaBase.astro";
-import Header from "../components/home/header/header.astro";
-import Slider from "../components/home/header/slider.astro";
-import AboutHome from "../components/home/aboutHome/aboutHome.astro";
-import HomeProyect from "../components/home/homeProyect/homeProyect.astro";
-import FAQS from "../components/home/faqs/faqs.jsx";
-import Banner from "../components/commons/banners/banner.astro";
-
-// Laboratorio de Alto Rendimiento MAES
-import ConsolaInteractiva from '../components/ConsolaInteractiva';
 ---
 
-<PlantillaBase 
-  titulo="Javier Cuevas - Diseñador & Editor de Video Cinemático | Creativos Kintsugi" 
-  descripcion="Bienvenido al portafolio profesional de Javier Cuevas. Fundador de Creativos Kintsugi. Especialista en edición de video de alto impacto, YouTube, reels, shorts y viralidad neuro-visual."
->
-  <!-- Cabecera Principal del Portafolio (Hero) -->
-  <span data-sujeto="JavierCuevas" data-predicado="presentaPresentacion" data-objeto="CabeceraHero">
-    <Header />
-  </span>
+<PlantillaBase titulo="Portafolio | Javier Cuevas | Edición de Video" descripcion="Portafolio de Javier Cuevas. Dirección, edición de video, documentales, corporativos y contenido de alta retención.">
+  <style is:global>
+    
+        body {
+            background-color: #050505;
+            color: #f3f4f6;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
 
-  <!-- Slider de Tecnologías -->
-  <Slider />
+        /* Tipografía Gigante Cinematográfica */
+        .text-huge {
+            font-size: clamp(3rem, 7vw, 6.5rem);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
 
-  <!-- Sobre Mí - Sección Home -->
-  <span data-sujeto="JavierCuevas" data-predicado="tieneResumen" data-objeto="ResumenProfesional">
-    <AboutHome />
-  </span>
+        /* Gradiente dorado elegante */
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #FFD700 0%, #ff8c00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-  <!-- Proyectos Destacados -->
-  <span data-sujeto="JavierCuevas" data-predicado="haDesarrollado" data-objeto="ProyectosPrincipales">
-    <HomeProyect />
-  </span>
+        /* Efecto de foco en el portafolio */
+        .portfolio-grid:hover .video-container:not(:hover),
+        .portfolio-grid:hover .video-horizontal:not(:hover) {
+            opacity: 0.3;
+            filter: grayscale(80%);
+        }
 
-  <!-- 🛠️ Laboratorio Arquitectónico Interactivo MAES (Consola de Desarrollo Javier) -->
-  <section id="laboratorio" class="py-24 bg-gray-950 border-t border-gray-900 relative" data-sujeto="SeccionConsola" data-predicado="alojaSimulador" data-objeto="ConsolaInteractivaReact">
-    <div class="absolute inset-0 bg-radial-gradient opacity-10"></div>
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-red-500/30 bg-red-500/10 text-red-400 text-xs font-semibold uppercase tracking-wider select-none">
-          🧪 Simulador de Viralidad Kintsugi
+        /* Contenedor Vertical */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 177.77%; /* Ratio 9:16 vertical */
+            background-color: #111111;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .video-container:hover {
+            transform: scale(1.02);
+            border-color: rgba(255, 215, 0, 0.5);
+            box-shadow: 0 20px 40px -10px rgba(255, 215, 0, 0.15);
+            z-index: 10;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        
+        .video-container:hover video {
+            opacity: 1;
+        }
+
+        /* Contenedor Horizontal */
+        .video-horizontal {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* Ratio 16:9 */
+            background-color: #111111;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .video-horizontal:hover {
+            transform: scale(1.02);
+            border-color: rgba(255, 215, 0, 0.5);
+            box-shadow: 0 20px 40px -10px rgba(255, 215, 0, 0.15);
+            z-index: 10;
+        }
+
+        .video-horizontal video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-horizontal:hover video {
+            opacity: 1;
+        }
+
+        /* Indicador de Play General */
+        .play-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            border-radius: 50%;
+            padding: 1.5rem;
+            opacity: 1;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            border: 1px solid rgba(255,215,0,0.3);
+        }
+
+        .video-container:hover .play-indicator,
+        .video-horizontal:hover .play-indicator {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        /* Líneas de escáner creativas de fondo */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1));
+            background-size: 100% 4px;
+            z-index: 999;
+            pointer-events: none;
+            opacity: 0.15;
+        }
+    
+  </style>
+
+  <!-- Lucide Script -->
+  <script is:inline src="https://unpkg.com/lucide@latest"></script>
+  
+  
+
+    <div class="scanlines"></div>
+
+    
+
+    <!-- Hero Section con Background Video -->
+    <section class="relative min-h-screen flex items-center pt-24 overflow-hidden">
+        
+        <!-- Video de Fondo (Neuromarketing) -->
+        <div class="absolute inset-0 z-0">
+            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-40 pointer-events-none">
+                <source src="https://servicebigboys.my.canva.site/_assets/video/1cfc39fd680b1e5bd96187965385a208.mp4" type="video/mp4">
+            </video>
+            <!-- Overlay degradado para que el texto sea 100% legible -->
+            <div class="absolute inset-0 bg-gradient-to-b from-kintsugi-dark/70 via-kintsugi-dark/60 to-kintsugi-dark"></div>
         </div>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white tipografia-titulo">
-          Consola de Retención & Viralidad
-        </h2>
-        <p class="text-gray-400 text-sm max-w-2xl mx-auto">
-          Prueba en tiempo real el impacto de nuestras estrategias. Ajusta los pilares de la metodología MAES (Método, Atención, Estética y Conversión) para ver cómo se disparan las métricas de retención y viralidad estimadas.
-        </p>
-      </div>
 
-      <!-- Renderizamos la Isla de React de la consola de rendimiento -->
-      <ConsolaInteractiva client:load />
+        <!-- Glows de fondo -->
+        <div class="absolute top-1/4 -left-1/4 w-96 h-96 bg-kintsugi-gold/10 rounded-full blur-[120px] z-0"></div>
+        
+        <div class="w-full max-w-screen-2xl mx-auto px-6 relative z-10">
+            <div class="max-w-5xl">
+                <p class="text-kintsugi-gold font-bold tracking-[0.3em] uppercase text-sm mb-6 flex items-center gap-4">
+                    <span class="w-12 h-[1px] bg-kintsugi-gold"></span> Realizador Audiovisual
+                </p>
+                
+                <h1 class="font-display font-black text-huge text-white mb-2 uppercase drop-shadow-2xl">
+                    Portafolio <br>
+                    <span class="text-gradient-gold">Javier Cuevas</span>
+                </h1>
+                <h2 class="text-3xl md:text-5xl font-display font-light text-gray-200 tracking-[0.2em] uppercase mb-10 drop-shadow-lg">
+                    Edición de Video
+                </h2>
+                
+                <p class="text-xl md:text-2xl text-gray-300 font-light max-w-3xl leading-relaxed mb-8 drop-shadow-md">
+                    Con más de 3 años de experiencia, transformo metraje crudo en narrativas inmersivas. Desde documentales y corporativos, hasta contenido ágil para redes diseñado para atrapar la atención.
+                </p>
+
+                <!-- Herramientas / Stack Tecnológico Destacado -->
+                <div class="flex flex-wrap items-center gap-3 mb-12">
+                    <span class="bg-black/50 backdrop-blur-sm border border-white/20 text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest flex items-center gap-2">
+                        <span class="text-[#9999ff] font-sans font-black">Pr</span> Premiere Pro
+                    </span>
+                    <span class="bg-black/50 backdrop-blur-sm border border-white/20 text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest flex items-center gap-2">
+                        <span class="text-[#9999ff] font-sans font-black">Ae</span> After Effects
+                    </span>
+                    <span class="bg-black/50 backdrop-blur-sm border border-white/20 text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest flex items-center gap-2">
+                        <i data-lucide="scissors" class="w-4 h-4 text-white"></i> CapCut Pro
+                    </span>
+                    <span class="bg-black/50 backdrop-blur-sm border border-white/20 text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest flex items-center gap-2 hidden sm:flex">
+                        <i data-lucide="pen-tool" class="w-4 h-4 text-[#F24E1E]"></i> Diseño UX/UI
+                    </span>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-6 items-start">
+                    <a href="#proyectos" class="group flex items-center gap-4 bg-white text-kintsugi-dark px-8 py-5 rounded-full font-bold text-lg hover:bg-kintsugi-gold transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                        Ver Proyectos 
+                        <i data-lucide="play-circle" class="w-6 h-6 group-hover:scale-110 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-6 flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-gray-400 -rotate-90 origin-left z-10">
+            <span>Deslizar</span>
+            <div class="w-16 h-[1px] bg-gray-600 relative overflow-hidden">
+                <div class="absolute top-0 left-0 h-full w-1/3 bg-kintsugi-gold animate-[pulse_2s_infinite]"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Proyectos -->
+    <section id="proyectos" class="py-32 bg-kintsugi-gray relative z-20">
+        <div class="max-w-screen-2xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20">
+                <div>
+                    <h2 class="text-4xl md:text-6xl font-display font-black mb-4">Proyectos <span class="text-kintsugi-gold">Destacados</span></h2>
+                    <p class="text-gray-400 text-lg">Pasa el cursor o mantén presionado para interactuar con las piezas.</p>
+                </div>
+                <div class="mt-6 md:mt-0 text-right">
+                    <p class="text-xs uppercase tracking-widest font-bold text-gray-500">Experiencia</p>
+                    <p class="text-3xl font-light text-white">+3 <span class="text-kintsugi-gold">Años</span></p>
+                </div>
+            </div>
+
+            <!-- 1. SECCIÓN HORIZONTAL -->
+            <div class="mb-24">
+                <h3 class="text-2xl font-display font-bold text-white mb-8 border-b border-white/10 pb-4 flex items-center gap-4">
+                    Formato Horizontal 
+                    <span class="text-kintsugi-dark text-xs font-bold tracking-widest uppercase bg-kintsugi-gold px-3 py-1 rounded-full">YouTube / Cine / Corp</span>
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 portfolio-grid">
+                    <div class="video-horizontal group cursor-pointer">
+                        <video src="https://servicebigboys.my.canva.site/_assets/video/ee3e9c9bb9e529c2421ce95326038c8c.mp4" loop muted playsinline preload="metadata" class="hover-play"></video>
+                        <div class="play-indicator"><i data-lucide="play" class="text-kintsugi-gold w-10 h-10 fill-current"></i></div>
+                    </div>
+                    
+                    <div class="video-horizontal group cursor-pointer">
+                        <video src="https://servicebigboys.my.canva.site/_assets/video/d6e43a9c926292e93daa04b73dffeba0.mp4" loop muted playsinline preload="metadata" class="hover-play"></video>
+                        <div class="play-indicator"><i data-lucide="play" class="text-kintsugi-gold w-10 h-10 fill-current"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. SECCIÓN VERTICAL -->
+            <div>
+                <h3 class="text-2xl font-display font-bold text-white mb-8 border-b border-white/10 pb-4 flex items-center gap-4">
+                    Formato Vertical 
+                    <span class="text-gray-300 text-xs font-bold tracking-widest uppercase bg-white/10 border border-white/20 px-3 py-1 rounded-full">Reels / TikTok / Shorts</span>
+                </h3>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 portfolio-grid">
+                    <div class="video-container cursor-pointer">
+                        <video src="https://servicebigboys.my.canva.site/_assets/video/bfc83310c2b682974f270135a5209955.mp4" loop muted playsinline preload="metadata" class="hover-play"></video>
+                        <div class="play-indicator"><i data-lucide="play" class="text-kintsugi-gold w-8 h-8 fill-current"></i></div>
+                    </div>
+                    <div class="video-container cursor-pointer mt-0 md:mt-12">
+                        <video src="https://servicebigboys.my.canva.site/_assets/video/8c6163b136d39e86ae7582b6cff5b2d5.mp4" loop muted playsinline preload="metadata" class="hover-play"></video>
+                        <div class="play-indicator"><i data-lucide="play" class="text-kintsugi-gold w-8 h-8 fill-current"></i></div>
+                    </div>
+                    <div class="video-container cursor-pointer">
+                        <video src="https://servicebigboys.my.canva.site/_assets/video/4e4d3d43c6b75148ab7f8b7066b2d092.mp4" loop muted playsinline preload="metadata" class="hover-play"></video>
+                        <div class="play-indicator"><i data-lucide="play" class="text-kintsugi-gold w-8 h-8 fill-current"></i></div>
+                    </div>
+                    <div class="video-container cursor-pointer mt-0 md:mt-12">
+                        <video src="https://servicebigboys.my.canva.site/_assets/video/4dbf2842ad15b88fe52cacb7f3de9fd3.mp4" loop muted playsinline preload="metadata" class="hover-play"></video>
+                        <div class="play-indicator"><i data-lucide="play" class="text-kintsugi-gold w-8 h-8 fill-current"></i></div>
+                    </div>
+                    <div class="video-container cursor-pointer">
+                        <video src="https://servicebigboys.my.canva.site/_assets/video/c6b9aadf580cd1c4c721e299c0cb0acc.mp4" loop muted playsinline preload="metadata" class="hover-play"></video>
+                        <div class="play-indicator"><i data-lucide="play" class="text-kintsugi-gold w-8 h-8 fill-current"></i></div>
+                    </div>
+                    <div class="video-container cursor-pointer mt-0 md:mt-12">
+                        <video src="https://servicebigboys.my.canva.site/_assets/video/3732d3e44810097dc4c8ef6bf312240c.mp4" loop muted playsinline preload="metadata" class="hover-play"></video>
+                        <div class="play-indicator"><i data-lucide="play" class="text-kintsugi-gold w-8 h-8 fill-current"></i></div>
+                    </div>
+                    <div class="video-container cursor-pointer">
+                        <video src="https://servicebigboys.my.canva.site/_assets/video/c9b4361af69a3a4b09de12bffcb16f82.mp4" loop muted playsinline preload="metadata" class="hover-play"></video>
+                        <div class="play-indicator"><i data-lucide="play" class="text-kintsugi-gold w-8 h-8 fill-current"></i></div>
+                    </div>
+                    <div class="video-container cursor-pointer mt-0 md:mt-12">
+                        <video src="https://servicebigboys.my.canva.site/_assets/video/0a89e6cd72529d3f7485ad5b9f3f630a.mp4" loop muted playsinline preload="metadata" class="hover-play"></video>
+                        <div class="play-indicator"><i data-lucide="play" class="text-kintsugi-gold w-8 h-8 fill-current"></i></div>
+                    </div>
+                    <div class="video-container cursor-pointer hidden lg:block">
+                        <video src="https://servicebigboys.my.canva.site/_assets/video/dbd9065ef8f95710189805551b7925c9.mp4" loop muted playsinline preload="metadata" class="hover-play"></video>
+                        <div class="play-indicator"><i data-lucide="play" class="text-kintsugi-gold w-8 h-8 fill-current"></i></div>
+                    </div>
+                    <div class="video-container cursor-pointer hidden lg:block mt-0 md:mt-12">
+                        <video src="https://servicebigboys.my.canva.site/_assets/video/e2077d16e3fa80baf570a61e3524019c.mp4" loop muted playsinline preload="metadata" class="hover-play"></video>
+                        <div class="play-indicator"><i data-lucide="play" class="text-kintsugi-gold w-8 h-8 fill-current"></i></div>
+                    </div>
+                    
+                    <div class="video-container bg-kintsugi-dark flex flex-col items-center justify-center border-2 border-kintsugi-gold/20 col-span-2 md:col-span-1 group hover:bg-kintsugi-gold/5 transition-all">
+                        <div class="text-center p-6">
+                            <i data-lucide="film" class="text-kintsugi-gold w-12 h-12 mx-auto mb-4 group-hover:scale-110 transition-transform"></i>
+                            <h3 class="text-white font-display font-bold text-xl mb-2">Tu Visión Aquí</h3>
+                            <p class="text-sm text-gray-400 mb-6">Cerremos la brecha entre tu idea y el botón de viralidad.</p>
+                            <a href="#contacto" class="inline-block text-xs uppercase tracking-widest font-bold text-kintsugi-dark bg-kintsugi-gold px-6 py-3 rounded-full hover:bg-white transition-colors">Postular Proyecto</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE PERFIL MEJORADA -->
+    <section id="perfil" class="py-32 bg-kintsugi-dark border-y border-white/5 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-50"></div>
+        
+        <div class="max-w-screen-xl mx-auto px-6 relative z-10">
+            
+            <!-- CONTENEDOR SUPERIOR: 2 Columnas (Texto y Tarjetas) -->
+            <div class="flex flex-col lg:flex-row gap-12 lg:gap-16">
+                
+                <!-- Columna Izquierda: Texto -->
+                <div class="w-full lg:w-1/2">
+                    <div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden mb-8 border-2 border-kintsugi-gold shadow-[0_0_20px_rgba(255,215,0,0.2)]">
+                        <img src="image_b4c894.jpg" alt="Javier Cuevas" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500">
+                    </div>
+                    
+                    <h2 class="text-sm font-bold uppercase tracking-[0.3em] text-kintsugi-gold mb-4">Sobre Mí</h2>
+                    <h3 class="text-4xl md:text-5xl font-display font-black mb-8 leading-tight">Narrativas visuales con <span class="text-gradient-gold">impacto real.</span></h3>
+                    
+                    <div class="text-gray-400 text-lg font-light space-y-6">
+                        <p>
+                            Soy <strong>Realizador Audiovisual y Editor de Video</strong>. Mi objetivo es simple: transformar material crudo en historias que retienen la atención y conectan con la audiencia.
+                        </p>
+                        <p>
+                            Domino desde la profundidad de un <strong>documental corporativo</strong> hasta el ritmo vertiginoso de los <strong>Videos Cortos (Reels/TikToks)</strong>, integrando siempre diseño sonoro y corrección de color para garantizar resultados estéticos y funcionales.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Columna Derecha: Tarjetas Reorganizadas -->
+                <div class="w-full lg:w-1/2">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 h-full content-start">
+                        <div class="bg-kintsugi-gray p-8 rounded-2xl border border-white/5 hover:border-kintsugi-gold/30 transition-all hover:-translate-y-1">
+                            <i data-lucide="layers" class="text-white w-8 h-8 mb-4"></i>
+                            <h4 class="text-white font-bold mb-2 text-lg">Multi-Formato</h4>
+                            <p class="text-sm text-gray-500">Experticia en documentales, corporativos y contenido vertical de alto rendimiento.</p>
+                        </div>
+                        
+                        <div class="bg-kintsugi-gray p-8 rounded-2xl border border-white/5 hover:border-kintsugi-gold/30 transition-all hover:-translate-y-1">
+                            <i data-lucide="layout" class="text-white w-8 h-8 mb-4"></i>
+                            <h4 class="text-white font-bold mb-2 text-lg">Diseño UX/UI</h4>
+                            <p class="text-sm text-gray-500">Creación de interfaces intuitivas y estéticas orientadas a la conversión y la mejor experiencia de usuario.</p>
+                        </div>
+                        
+                        <div class="bg-kintsugi-gray p-8 rounded-2xl border border-white/5 hover:border-kintsugi-gold/30 transition-all hover:-translate-y-1">
+                            <i data-lucide="megaphone" class="text-white w-8 h-8 mb-4"></i>
+                            <h4 class="text-white font-bold mb-2 text-lg">Tráfico & Ads</h4>
+                            <p class="text-sm text-gray-500">Administración estratégica de anuncios para escalar captación y ventas.</p>
+                        </div>
+                        
+                        <div class="bg-kintsugi-gray p-8 rounded-2xl border border-white/5 hover:border-kintsugi-gold/30 transition-all hover:-translate-y-1">
+                            <i data-lucide="monitor-play" class="text-white w-8 h-8 mb-4"></i>
+                            <h4 class="text-white font-bold mb-2 text-lg">Ecosistema Adobe</h4>
+                            <p class="text-sm text-gray-500">Dominio en Premiere, After Effects y herramientas ágiles como CapCut Pro.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CONTENEDOR MEDIO: Herramientas de Edición -->
+            <div class="w-full mt-24 pt-16 border-t border-white/5">
+                <h4 class="text-center text-sm font-bold uppercase tracking-[0.3em] text-gray-500 mb-12">Mi Suite de Edición Detallada</h4>
+                <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+                    <div class="flex flex-col items-center opacity-60 hover:opacity-100 transition-all hover:scale-110 cursor-pointer">
+                        <div class="w-14 h-14 rounded-xl bg-[#00005c] flex items-center justify-center mb-3 border border-[#9999ff] shadow-[0_0_15px_rgba(153,153,255,0.2)]">
+                            <span class="text-[#9999ff] font-bold text-xl font-sans">Pr</span>
+                        </div>
+                        <span class="text-[10px] font-bold tracking-widest text-gray-400 uppercase">Premiere</span>
+                    </div>
+                    
+                    <div class="flex flex-col items-center opacity-60 hover:opacity-100 transition-all hover:scale-110 cursor-pointer">
+                        <div class="w-14 h-14 rounded-xl bg-[#00005c] flex items-center justify-center mb-3 border border-[#9999ff] shadow-[0_0_15px_rgba(153,153,255,0.2)]">
+                            <span class="text-[#9999ff] font-bold text-xl font-sans">Ae</span>
+                        </div>
+                        <span class="text-[10px] font-bold tracking-widest text-gray-400 uppercase">After Effects</span>
+                    </div>
+
+                    <div class="flex flex-col items-center opacity-60 hover:opacity-100 transition-all hover:scale-110 cursor-pointer">
+                        <div class="w-14 h-14 rounded-xl bg-black flex items-center justify-center mb-3 border border-[#F24E1E] shadow-[0_0_15px_rgba(242,78,30,0.2)]">
+                            <span class="text-[#F24E1E] font-bold text-xl font-display">UX</span>
+                        </div>
+                        <span class="text-[10px] font-bold tracking-widest text-gray-400 uppercase">Diseño UX/UI</span>
+                    </div>
+
+                    <div class="flex flex-col items-center opacity-60 hover:opacity-100 transition-all hover:scale-110 cursor-pointer">
+                        <div class="w-14 h-14 rounded-xl bg-black flex items-center justify-center mb-3 border border-[#4285F4] shadow-[0_0_15px_rgba(66,133,244,0.2)]">
+                            <i data-lucide="megaphone" class="w-7 h-7 text-[#4285F4]"></i>
+                        </div>
+                        <span class="text-[10px] font-bold tracking-widest text-gray-400 uppercase">Ads</span>
+                    </div>
+
+                    <div class="flex flex-col items-center opacity-60 hover:opacity-100 transition-all hover:scale-110 cursor-pointer">
+                        <div class="w-14 h-14 rounded-xl bg-black flex items-center justify-center mb-3 border border-gray-600 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                            <svg viewBox="0 0 24 24" fill="none" class="w-8 h-8 text-white" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 4L4 8L12 12L20 8L12 4Z" fill="white"/>
+                                <path d="M4 12L12 16L20 12" stroke="white" stroke-width="2"/>
+                                <path d="M4 16L12 20L20 16" stroke="white" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <span class="text-[10px] font-bold tracking-widest text-gray-400 uppercase">CapCut Pro</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTENEDOR INFERIOR: Apartado de Desarrollo Web y Ads -->
+            <div class="w-full mt-24 bg-gradient-to-r from-kintsugi-gold/10 to-transparent border border-kintsugi-gold/30 rounded-[2rem] p-8 md:p-12 relative overflow-hidden">
+                <!-- Glow decorativo de fondo -->
+                <div class="absolute -right-20 -top-20 w-64 h-64 bg-kintsugi-gold/20 rounded-full blur-[80px]"></div>
+                
+                <div class="relative z-10 w-full">
+                    <h4 class="text-kintsugi-gold font-bold uppercase tracking-[0.2em] text-xs mb-3 flex items-center gap-2">
+                        <i data-lucide="rocket" class="w-4 h-4"></i> Escalabilidad Digital
+                    </h4>
+                    <h3 class="text-3xl md:text-4xl font-display font-black text-white mb-4 leading-tight">Desarrollo Web & <br>Ventas en Automático</h3>
+                    <p class="text-gray-400 text-lg font-light leading-relaxed max-w-3xl">
+                        No solo edito contenido visual para que luzca increíble; construyo el ecosistema completo para que tu negocio crezca. Desarrollo <strong>Embudos de Venta (Funnels) con excelente Diseño UX/UI</strong>, optimizados estratégicamente con la <strong>administración de anuncios (Ads)</strong> para captar clientes y escalar tus ingresos en automático.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="py-32 bg-kintsugi-dark relative">
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-display font-black mb-6">Iniciemos el <span class="text-kintsugi-gold italic">Corte.</span></h2>
+                <p class="text-gray-400 text-xl font-light">Cuéntame sobre tu marca, tu volumen de contenido o la visión de tu próximo gran lanzamiento.</p>
+            </div>
+            
+            <div class="bg-kintsugi-gray p-10 md:p-16 rounded-[2rem] border border-white/5 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-kintsugi-gold/10 rounded-bl-full"></div>
+
+                <form id="contactForm" class="space-y-8 relative z-10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">Nombre / Agencia</label>
+                            <input type="text" id="formName" required class="w-full bg-transparent border-b-2 border-white/10 px-0 py-3 text-white text-lg focus:outline-none focus:border-kintsugi-gold transition-colors placeholder-gray-700" placeholder="Ej. Juan Pérez">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">WhatsApp Directo</label>
+                            <input type="tel" id="formPhone" required class="w-full bg-transparent border-b-2 border-white/10 px-0 py-3 text-white text-lg focus:outline-none focus:border-kintsugi-gold transition-colors placeholder-gray-700" placeholder="+57 300 000 0000">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">Tus Redes / Proyecto Actual</label>
+                        <input type="text" id="formProject" class="w-full bg-transparent border-b-2 border-white/10 px-0 py-3 text-white text-lg focus:outline-none focus:border-kintsugi-gold transition-colors placeholder-gray-700" placeholder="Ej. @tu_cuenta o Link de YouTube">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">¿Qué buscas lograr?</label>
+                        <select id="formGoal" class="w-full bg-transparent border-b-2 border-white/10 px-0 py-3 text-white text-lg focus:outline-none focus:border-kintsugi-gold transition-colors appearance-none cursor-pointer">
+                            <option class="bg-kintsugi-dark text-white">Quiero delegar mi edición recurrente (Videos Cortos)</option>
+                            <option class="bg-kintsugi-dark text-white">Tengo un lanzamiento o proyecto especial</option>
+                            <option class="bg-kintsugi-dark text-white">Edición de formato largo (YouTube)</option>
+                            <option class="bg-kintsugi-dark text-white">Busco colaboración comercial B2B</option>
+                        </select>
+                    </div>
+
+                    <div class="pt-8">
+                        <button type="submit" class="w-full bg-white text-kintsugi-dark font-black uppercase tracking-widest py-6 rounded-xl hover:bg-kintsugi-gold transition-all duration-300 text-lg flex justify-center items-center gap-3 group">
+                            Enviar Propuesta 
+                            <i data-lucide="arrow-up-right" class="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Premium -->
+    <div id="successModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-kintsugi-gray border border-white/10 p-12 rounded-3xl max-w-lg w-full text-center relative mx-4 transform scale-95 transition-transform duration-300 shadow-2xl">
+            <div class="w-20 h-20 bg-kintsugi-gold rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_30px_rgba(255,215,0,0.3)]">
+                <i data-lucide="check" class="text-kintsugi-dark w-10 h-10 stroke-[3px]"></i>
+            </div>
+            <h3 class="text-3xl font-display font-black text-white mb-4">Mensaje Recibido</h3>
+            <p class="text-gray-400 mb-10 text-lg font-light">He recibido tus datos. Revisaré tu perfil y me pondré en contacto vía WhatsApp para organizar nuestra colaboración.</p>
+            <button id="closeModalBtn" class="bg-white text-kintsugi-dark font-bold uppercase tracking-widest px-8 py-4 rounded-xl hover:bg-kintsugi-gold transition-colors w-full">
+                Cerrar
+            </button>
+        </div>
     </div>
-  </section>
 
-  <!-- Sección de Preguntas Frecuentes -->
-  <span data-sujeto="SeccionFaqs" data-predicado="aclaraDudas" data-objeto="PreguntasFrecuentes">
-    <FAQS client:visible />
-  </span>
+    
 
-  <!-- Banner de Cierre -->
-  <Banner />
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+
+        const videos = document.querySelectorAll('.hover-play');
+        
+        videos.forEach(video => {
+            video.pause();
+            
+            video.parentElement.addEventListener('mouseenter', () => {
+                video.play().catch(e => console.log("Autoplay paused", e));
+            });
+            
+            video.parentElement.addEventListener('mouseleave', () => {
+                video.pause();
+            });
+
+            video.parentElement.addEventListener('touchstart', (e) => {
+                if(video.paused) {
+                    videos.forEach(v => { if(v !== video) v.pause(); });
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            }, {passive: true});
+        });
+
+        const form = document.getElementById('contactForm');
+        const modal = document.getElementById('successModal');
+        const closeBtn = document.getElementById('closeModalBtn');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 1. Recopilar los datos de los inputs
+            const name = document.getElementById('formName').value;
+            const phone = document.getElementById('formPhone').value;
+            const project = document.getElementById('formProject').value || 'No especificado';
+            const goal = document.getElementById('formGoal').value;
+            
+            // 2. Formatear el mensaje usando codificación de URL para los saltos de línea (%0A) y espacios
+            const message = `¡Hola Javier! Vengo de tu portafolio y me gustaría proponerte una colaboración.%0A%0A*Mis Datos:*%0A👤 *Nombre/Agencia:* ${name}%0A📱 *WhatsApp:* ${phone}%0A🔗 *Proyecto/Redes:* ${project}%0A🎯 *Objetivo:* ${goal}`;
+            
+            // 3. Crear el link de WhatsApp con tu número
+            const whatsappNumber = '573212264782';
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+            
+            // 4. Redirigir a WhatsApp
+            window.open(whatsappUrl, '_blank');
+            
+            // 5. Mostrar la ventana de éxito de todas formas en la página base y limpiar
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modal.firstElementChild.classList.remove('scale-95');
+                modal.firstElementChild.classList.add('scale-100');
+            }, 10);
+            this.reset();
+        });
+
+        closeBtn.addEventListener('click', function() {
+            modal.classList.add('opacity-0');
+            modal.firstElementChild.classList.remove('scale-100');
+            modal.firstElementChild.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        });
+    </script>
+
 </PlantillaBase>
